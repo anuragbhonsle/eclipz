@@ -56,7 +56,7 @@ const About = () => {
             <div>
               <h2 className="text-xl font-semibold mb-2">Fueled by</h2>
               <p className="text-muted-foreground">
-                Faith, caffeine, and curiosity ✝️
+                Faith, caffeine, and curiosity.
               </p>
             </div>
           </div>
