@@ -1,21 +1,17 @@
-
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { 
-  getFirestore,
-  connectFirestoreEmulator
-} from "firebase/firestore";
+import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 import { toast } from "sonner";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDsAr574SATnM34oQqTX0B4P7Rbu48ISfM",
-  authDomain: "visper-6814d.firebaseapp.com",
-  projectId: "visper-6814d",
-  storageBucket: "visper-6814d.firebasestorage.app",
-  messagingSenderId: "80743846349",
-  appId: "1:80743846349:web:118025284726fa234bb484",
-  measurementId: "G-3HQS5LPE01"
+  apiKey: "AIzaSyDc3F1981ZNFqRR7uDl8hNsHdcW8vYQCGU",
+  authDomain: "eclipz-app.firebaseapp.com",
+  projectId: "eclipz-app",
+  storageBucket: "eclipz-app.firebasestorage.app",
+  messagingSenderId: "589442510742",
+  appId: "1:589442510742:web:c656cc042e5243542577b7",
+  measurementId: "G-DFCH67LKCC",
 };
 
 // Initialize Firebase
@@ -25,7 +21,7 @@ export const db = getFirestore(app);
 
 export const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
-  prompt: 'select_account'
+  prompt: "select_account",
 });
 
 // Only initialize analytics in browser environment
@@ -35,9 +31,9 @@ export { analytics };
 // Add error handler for Firebase operations
 export const handleFirebaseError = (error: any) => {
   console.error("Firebase operation failed:", error);
-  
+
   let errorMessage = "An error occurred";
-  
+
   if (error.code === "permission-denied") {
     errorMessage = "Access denied. Please check your permissions.";
   } else if (error.code === "not-found") {
@@ -53,7 +49,7 @@ export const handleFirebaseError = (error: any) => {
   } else if (error.message) {
     errorMessage = error.message;
   }
-  
+
   toast.error(errorMessage);
   return errorMessage;
 };
