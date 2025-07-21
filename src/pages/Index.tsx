@@ -50,7 +50,7 @@ const Index = () => {
       {/* Hero Section */}
       <section className="flex-1 flex flex-col items-center justify-center px-4 pt-20 pb-20 min-h-[98vh] relative">
         <div className="max-w-3xl w-full text-center space-y-8 z-10">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter whitespace-nowrap">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter md:whitespace-nowrap text-balance">
             Say Anything. Stay Anonymous.
           </h1>
 
