@@ -15,7 +15,7 @@ const DevModal: React.FC<DevModalProps> = ({ isOpen, onClose }) => {
       onClick={onClose}
     >
       <div
-        className="card-glass max-w-md w-full mx-4 animate-fade-in"
+        className="card-glass max-w-md w-full mx-4 animate-fade-in text-white"
         onClick={(e) => e.stopPropagation()}
       >
         <h3 className="text-2xl font-bold mb-4 text-primary">
