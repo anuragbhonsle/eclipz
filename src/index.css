@@ -1,0 +1,162 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 230 25% 98%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    /* Spruce/Spring Green */
+    --primary: 145 63% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    /* Custom accent color - lighter green */
+    --accent: 150 54% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 355 100% 97.5%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 145 63% 42%;
+
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 240 12% 5%;
+    --foreground: 355 100% 97.5%;
+
+    --card: 240 10% 10%;
+    --card-foreground: 355 100% 97.5%;
+
+    --popover: 240 10% 8%;
+    --popover-foreground: 355 100% 97.5%;
+
+    /* Spruce/Spring Green */
+    --primary: 145 63% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 6% 10%;
+    --secondary-foreground: 355 100% 97.5%;
+
+    --muted: 240 6% 15%;
+    --muted-foreground: 240 5% 64.9%;
+
+    /* Custom accent color - lighter green */
+    --accent: 150 54% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 355 100% 97.5%;
+
+    --border: 240 6% 15%;
+    --input: 240 6% 15%;
+    --ring: 145 63% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Outfit', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply backdrop-blur-lg border border-white/10 bg-white/5 dark:bg-black/30 shadow-xl;
+  }
+  
+  .card-glass {
+    @apply glass rounded-2xl p-6;
+  }
+  
+  .typing-container {
+    @apply overflow-hidden;
+  }
+  
+  .typing-text {
+    @apply overflow-hidden border-r-4 border-primary inline-block whitespace-nowrap animate-typing;
+  }
+  
+  /* Custom button styles */
+  .btn-custom {
+    @apply relative overflow-hidden transition-all duration-300;
+  }
+  
+  .btn-custom::before {
+    @apply content-[''] absolute top-0 left-0 w-full h-full bg-white/10 transform scale-x-0 origin-left transition-transform duration-300;
+  }
+  
+  .btn-custom:hover::before {
+    @apply transform scale-x-100;
+  }
+}
+
+/* Custom gradient backgrounds */
+.bg-gradient-1 {
+  background: linear-gradient(135deg, hsl(145, 63%, 42%), hsl(150, 54%, 60%));
+}
+
+.bg-gradient-2 {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+  backdrop-filter: blur(15px);
+}
+
+/* Custom animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Custom scroll bars */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--primary), 0.3);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
