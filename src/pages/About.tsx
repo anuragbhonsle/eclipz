@@ -12,7 +12,7 @@ const About = () => {
           <div className="space-y-6">
             <div>
               <h2 className="text-2xl font-semibold mb-3">
-                👨‍💻 About the Developer
+                About the Developer
               </h2>
               <p className="text-muted-foreground mb-4">
                 Hey, I'm Anurag – React dev from Pune 🇮🇳.
