@@ -22,6 +22,10 @@ const About = () => {
                 of mystery. I’m passionate about minimal design, deep
                 conversations, and learning something new every day. When not on
                 LeetCode, I’m likely reflecting on the Word and thanking God.
+                Also, Eclipz does not tolerate harassment, explicit content, or
+                abusive messages. In the upcoming update, users will be able to
+                block senders directly from a received message. A profanity
+                filter is also being implemented to help protect your inbox.
               </p>
             </div>
 
