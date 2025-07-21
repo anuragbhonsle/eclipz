@@ -15,17 +15,20 @@ const About = () => {
                 About the Developer
               </h2>
               <p className="text-muted-foreground mb-4">
-                Hey, I'm Anurag – React dev from Pune 🇮🇳.
+                Eclipz was built to blend anonymity, a clean UI, and just a hint
+                of mystery. It's a space where you can say anything while
+                staying anonymous. I’m passionate about minimal design, deep
+                conversations, and learning something new every day.
               </p>
               <p className="text-muted-foreground mb-4">
-                Eclipz was built to blend anonymity, clean UI, and just a hint
-                of mystery. I’m passionate about minimal design, deep
-                conversations, and learning something new every day. When not on
-                LeetCode, I’m likely reflecting on the Word and thanking God.
-                Also, Eclipz does not tolerate harassment, explicit content, or
-                abusive messages. In the upcoming update, users will be able to
-                block senders directly from a received message. A profanity
-                filter is also being implemented to help protect your inbox.
+                Hey, I'm Anurag – a React developer from Pune 🇮🇳. When I’m not
+                solving LeetCode or building projects, you’ll probably find me
+                reflecting on the Word and thanking God for the journey.
+              </p>
+              <p className="text-muted-foreground mb-4">
+                Eclipz does not tolerate harassment, explicit content, or
+                abusive messages. Upcoming updates will introduce sender
+                blocking and a profanity filter to help protect your inbox.
               </p>
             </div>
 
@@ -42,7 +45,7 @@ const About = () => {
                   Firebase
                 </span>
                 <span className="bg-secondary px-3 py-1 rounded-full text-sm">
-                  Tailwind
+                  Tailwind CSS
                 </span>
                 <span className="bg-secondary px-3 py-1 rounded-full text-sm">
                   Node.js
@@ -53,7 +56,7 @@ const About = () => {
             <div>
               <h2 className="text-xl font-semibold mb-2">Fueled by</h2>
               <p className="text-muted-foreground">
-                Curiosity, caffeine, and Christ ✝️
+                Faith, caffeine, and curiosity ✝️
               </p>
             </div>
           </div>
