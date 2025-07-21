@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -19,11 +18,10 @@ const About = () => {
                 Hey, I'm Anurag – React dev from Pune 🇮🇳.
               </p>
               <p className="text-muted-foreground mb-4">
-                Eclipz was built to blend anonymity, UI, and a little mystery. I
-                love clean UIs, deep chats, coding at 3AM, and learning
-                something new every day. When I'm not doing LeetCode or making
-                coffee for my mom, I'm probably deep in the Word, thanking God
-                for another chance.
+                Eclipz was built to blend anonymity, clean UI, and just a hint
+                of mystery. I’m passionate about minimal design, deep
+                conversations, and learning something new every day. When not on
+                LeetCode, I’m likely reflecting on the Word and thanking God.
               </p>
             </div>
 
@@ -41,6 +39,9 @@ const About = () => {
                 </span>
                 <span className="bg-secondary px-3 py-1 rounded-full text-sm">
                   Tailwind
+                </span>
+                <span className="bg-secondary px-3 py-1 rounded-full text-sm">
+                  Node.js
                 </span>
               </div>
             </div>

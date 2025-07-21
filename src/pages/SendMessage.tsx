@@ -1,7 +1,13 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { collection, query, where, getDocs, addDoc, serverTimestamp } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  addDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,7 +23,7 @@ const SendMessage = () => {
   const [sent, setSent] = useState(false);
   const [searchUsername, setSearchUsername] = useState(username || "");
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     if (username) {
       checkUserExists(username);
@@ -25,23 +31,23 @@ const SendMessage = () => {
       setUserExists(null);
     }
   }, [username]);
-  
+
   const checkUserExists = async (usernameToCheck: string) => {
     if (!usernameToCheck) {
       setUserExists(false);
       return;
     }
-    
+
     try {
       // Make sure username has @ prefix for database query
-      const formattedUsername = usernameToCheck.startsWith('@') 
-        ? usernameToCheck 
+      const formattedUsername = usernameToCheck.startsWith("@")
+        ? usernameToCheck
         : `@${usernameToCheck}`;
-      
+
       const usersRef = collection(db, "users");
       const q = query(usersRef, where("username", "==", formattedUsername));
       const querySnapshot = await getDocs(q);
-      
+
       setUserExists(!querySnapshot.empty);
     } catch (error) {
       console.error("Error checking user:", error);
@@ -49,47 +55,47 @@ const SendMessage = () => {
       setUserExists(false);
     }
   };
-  
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchUsername.trim()) {
       // Remove @ if user typed it at the start
-      const formattedUsername = searchUsername.trim().startsWith('@')
+      const formattedUsername = searchUsername.trim().startsWith("@")
         ? searchUsername.trim().substring(1)
         : searchUsername.trim();
-      
+
       navigate(`/@${formattedUsername}`);
     }
   };
-  
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!message.trim()) {
       toast.error("Message cannot be empty");
       return;
     }
-    
+
     if (message.length > 500) {
       toast.error("Message too long (max 500 characters)");
       return;
     }
-    
+
     setLoading(true);
-    
+
     try {
       // Format the username with @ prefix for the database
-      const formattedUsername = username?.startsWith('@') 
-        ? username 
+      const formattedUsername = username?.startsWith("@")
+        ? username
         : `@${username}`;
-      
+
       await addDoc(collection(db, "messages"), {
         message: message.trim(),
         recipientUsername: formattedUsername,
         timestamp: serverTimestamp(),
-        reported: false
+        reported: false,
       });
-      
+
       setMessage("");
       setSent(true);
       toast.success("Message sent anonymously!");
@@ -107,9 +113,9 @@ const SendMessage = () => {
       <div className="min-h-screen flex items-center justify-center pt-20 pb-10 px-4">
         <div className="card-glass max-w-md w-full animate-fade-in">
           <h2 className="text-2xl font-bold mb-6 text-center">
-            Send Anonymous Message
+            Send Message Anonymously
           </h2>
-          
+
           <form onSubmit={handleSearch} className="space-y-4 mb-6">
             <div className="relative">
               <Input
@@ -119,23 +125,25 @@ const SendMessage = () => {
                 className="glass pl-7"
                 required
               />
-              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground">@</span>
-              <Button 
-                type="submit" 
-                variant="ghost" 
+              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground">
+                @
+              </span>
+              <Button
+                type="submit"
+                variant="ghost"
                 className="absolute right-0 top-0 h-full px-3"
               >
                 <Search size={18} />
               </Button>
             </div>
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               className="w-full bg-primary hover:bg-primary/80"
             >
               Find User
             </Button>
           </form>
-          
+
           <p className="text-center text-sm text-muted-foreground">
             Don't know their username? Ask them to share it with you!
           </p>
@@ -143,7 +151,7 @@ const SendMessage = () => {
       </div>
     );
   }
-  
+
   // Loading state
   if (userExists === null) {
     return (
@@ -157,7 +165,7 @@ const SendMessage = () => {
       </div>
     );
   }
-  
+
   // User not found
   if (userExists === false) {
     return (
@@ -167,7 +175,7 @@ const SendMessage = () => {
           <p className="text-muted-foreground mb-6">
             We couldn't find anyone with the username "{username}"
           </p>
-          
+
           <form onSubmit={handleSearch} className="space-y-4 mb-6">
             <div className="relative">
               <Input
@@ -177,26 +185,30 @@ const SendMessage = () => {
                 className="glass pl-7"
                 required
               />
-              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground">@</span>
+              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground">
+                @
+              </span>
             </div>
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               className="w-full bg-primary hover:bg-primary/80"
             >
               Search
             </Button>
           </form>
-          
+
           <div className="pt-4 border-t border-border">
             <Link to="/">
-              <Button variant="outline" className="w-full">Go Home</Button>
+              <Button variant="outline" className="w-full">
+                Go Home
+              </Button>
             </Link>
           </div>
         </div>
       </div>
     );
   }
-  
+
   // Message sent confirmation
   if (sent) {
     return (
@@ -232,7 +244,7 @@ const SendMessage = () => {
         <p className="text-muted-foreground mb-6 text-center">
           This message will be sent anonymously.
         </p>
-        
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <Textarea
             value={message}
@@ -244,8 +256,8 @@ const SendMessage = () => {
           <p className="text-xs text-right text-muted-foreground">
             {message.length}/500 characters
           </p>
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             disabled={loading || !message.trim()}
             className="w-full bg-primary hover:bg-primary/80"
           >
@@ -254,7 +266,9 @@ const SendMessage = () => {
                 <Loader2 className="h-4 w-4 animate-spin" />
                 <span>Sending...</span>
               </div>
-            ) : "Send Anonymously"}
+            ) : (
+              "Send Anonymously"
+            )}
           </Button>
         </form>
       </div>
