@@ -11,9 +11,6 @@ const About = () => {
 
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-semibold mb-3">
-                About the Developer
-              </h2>
               <p className="text-muted-foreground mb-4">
                 Eclipz was built to blend anonymity, a clean UI, and just a hint
                 of mystery. It's a space where you can say anything while
