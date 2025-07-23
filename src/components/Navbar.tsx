@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Moon, Sun, Menu, X, User, Copy, Check } from "lucide-react";
 import { useState } from "react";
@@ -33,23 +32,24 @@ const Navbar = () => {
 
   const getProfileUrl = () => {
     if (!currentUser?.displayName) return null;
-    const username = currentUser.displayName.startsWith('@') 
-      ? currentUser.displayName.substring(1) 
+    const username = currentUser.displayName.startsWith("@")
+      ? currentUser.displayName.substring(1)
       : currentUser.displayName;
     return `${window.location.origin}/@${username}`;
   };
-  
+
   const profileUrl = getProfileUrl();
-  
+
   const copyProfileLink = () => {
     if (profileUrl) {
-      navigator.clipboard.writeText(profileUrl)
+      navigator.clipboard
+        .writeText(profileUrl)
         .then(() => {
           setCopied(true);
           toast.success("Profile link copied to clipboard!");
           setTimeout(() => setCopied(false), 2000);
         })
-        .catch(err => {
+        .catch((err) => {
           console.error("Could not copy text: ", err);
         });
     }
@@ -86,10 +86,14 @@ const Navbar = () => {
             >
               Inbox
             </Link>
-            
+
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="icon" className="rounded-full border-primary">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="rounded-full border-primary"
+                >
                   <User size={18} className="text-primary" />
                 </Button>
               </DropdownMenuTrigger>
@@ -99,14 +103,23 @@ const Navbar = () => {
                 {currentUser.displayName && (
                   <DropdownMenuItem className="flex flex-col items-start">
                     <span className="font-medium">Username</span>
-                    <span className="text-xs text-muted-foreground">{currentUser.displayName}</span>
+                    <span className="text-xs text-muted-foreground">
+                      {currentUser.displayName}
+                    </span>
                   </DropdownMenuItem>
                 )}
                 {profileUrl && (
-                  <DropdownMenuItem onClick={copyProfileLink} className="flex flex-col items-start cursor-pointer">
-                    <span className="font-medium">Your Link (click to copy)</span>
+                  <DropdownMenuItem
+                    onClick={copyProfileLink}
+                    className="flex flex-col items-start cursor-pointer"
+                  >
+                    <span className="font-medium">
+                      Your Link (click to copy)
+                    </span>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs text-muted-foreground truncate max-w-[180px]">{profileUrl}</span>
+                      <span className="text-xs text-muted-foreground truncate max-w-[180px]">
+                        {profileUrl}
+                      </span>
                       {copied ? (
                         <Check className="h-3 w-3 text-green-500" />
                       ) : (
@@ -121,12 +134,15 @@ const Navbar = () => {
                     Profile Settings
                   </DropdownMenuItem>
                 </Link>
-                <DropdownMenuItem onClick={handleLogout} className="text-destructive">
+                <DropdownMenuItem
+                  onClick={handleLogout}
+                  className="text-destructive"
+                >
                   Log Out
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            
+
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full hover:bg-secondary transition-colors"
@@ -166,7 +182,12 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="absolute top-full left-0 w-full p-5 glass md:hidden flex flex-col space-y-4 mt-2 rounded-b-2xl animate-fade-in">
+        <div
+          className="absolute top-full left-0 w-full p-5 
+  bg-white/90 dark:bg-black/80 
+  backdrop-blur-md shadow-xl md:hidden flex flex-col space-y-4 
+  mt-2 rounded-b-2xl animate-fade-in border border-border"
+        >
           <Link
             to="/"
             className="text-foreground hover:text-primary transition-colors"
@@ -191,7 +212,7 @@ const Navbar = () => {
               >
                 Inbox
               </Link>
-              
+
               <Link
                 to="/profile"
                 className="text-foreground hover:text-primary transition-colors"
@@ -199,7 +220,7 @@ const Navbar = () => {
               >
                 Profile
               </Link>
-              
+
               <div className="py-2 px-3 bg-background/50 rounded-lg">
                 <h3 className="font-medium mb-1">Quick Info</h3>
                 {currentUser.displayName && (
@@ -212,9 +233,9 @@ const Navbar = () => {
                   <div>
                     <p className="text-sm text-muted-foreground">Your link:</p>
                     <p className="text-sm break-all">{profileUrl}</p>
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
+                    <Button
+                      variant="ghost"
+                      size="sm"
                       className="mt-1 text-primary text-xs p-0 h-auto"
                       onClick={copyProfileLink}
                     >
@@ -223,7 +244,7 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
-              
+
               <button
                 onClick={() => {
                   handleLogout();
