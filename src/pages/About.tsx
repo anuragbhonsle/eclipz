@@ -18,7 +18,7 @@ const About = () => {
                 conversations, and learning something new every day.
               </p>
               <p className="text-muted-foreground mb-4">
-                Hey, I'm Anurag – a React developer from Pune 🇮🇳. When I’m not
+                I'm Anurag – a React developer from Pune 🇮🇳. When I’m not
                 solving LeetCode or building projects, you’ll probably find me
                 reflecting on the Word and thanking God for the journey.
               </p>
