@@ -16,5 +16,4 @@ An anonymous messaging platform with a clean, modern UI built with:
 - Anonymous messaging
 - Offline support
 - Clean, modern UI with spruce/spring green theme
-- Dark/light mode toggle
 
