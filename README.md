@@ -11,7 +11,7 @@ An anonymous messaging platform with a clean, modern UI built with:
 
 ## Features
 
-- User authentication (email/password and Google sign-in)
+- User authentication (Google sign-in)
 - Custom username selection
 - Anonymous messaging
 - Offline support
